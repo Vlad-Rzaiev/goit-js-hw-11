@@ -4,17 +4,6 @@ body {
   color: #2e2f42;
 }
 
-.container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid #2e2f42;
-  border-radius: 8px;
-  width: 250px;
-  padding: 24px;
-}
-
 a {
   display: block;
   text-align: center;
@@ -23,18 +12,75 @@ a {
   cursor: pointer;
 }
 
-.page-btn {
-  background-color: #86fa01;
+ul {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.search-form {
+  width: 376px;
+  margin: 36px auto 32px;
+}
+
+.search-input {
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  width: 272px;
+  height: 40px;
+  outline: none;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-right: 8px;
+}
+
+.search-input::placeholder {
+  color: #808080;
+}
+
+.search-input:hover {
+  border: 2px solid #000000;
+}
+
+.search-input:focus {
+  border: 2px solid #4e75ff;
+}
+
+.search-btn {
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  border: none;
   border-radius: 8px;
   padding: 8px 16px;
+  background-color: #4e75ff;
+  cursor: pointer;
   transition: background-color 250ms linear;
 }
 
-.page-btn:not(:last-child) {
-  margin-bottom: 24px;
+.search-btn:hover,
+.search-btn:focus {
+  background-color: #6c8cff;
 }
 
-.page-btn:hover,
-.page-btn:focus {
-  background-color: #86fa01b0;
+.gallery {
+  width: 1128px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 0 auto;
+}
+
+.gallery > li {
+  width: calc((100% - 48px) / 3);
+  height: 200px;
 }
