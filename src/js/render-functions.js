@@ -2,17 +2,17 @@ const gallery = document.querySelector('.gallery');
 
 export function renderGallery(images) {
   const markup = images
-    .map(
-      image => `
-    <li class="gallery-item">
-        <a class="gallery-link" href="${image.largeImageURL}">
-        <img
+    .map(image => {
+      return `
+        <li class="gallery-item">
+          <a class="gallery-link" href="${image.largeImageURL}">
+          <img
             class="gallery-image"
             src="${image.webformatURL}"
             alt="${image.tags}"
             />
-        </a>
-        <div class="stat-container">
+          </a>
+          <div class="stat-container">
             <div>
                 <span><b>Likes</b></span>
                 <span>${image.likes}</span>
@@ -29,10 +29,10 @@ export function renderGallery(images) {
                 <span><b>Downloads</b></span>
                 <span>${image.downloads}</span>
             </div>
-        </div>
-    </li>
-    `
-    )
+          </div>
+        </li>
+    `;
+    })
     .join('');
   gallery.innerHTML = markup;
 }
