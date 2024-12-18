@@ -23,7 +23,20 @@ searchForm.addEventListener('submit', ev => {
   }
 
   getImages(userInputValue)
-    .then(images => renderGallery(images))
+    .then(images => {
+      if (images.hits.length === 0) {
+        iziToast.show({
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          messageColor: '#ffffff',
+          iconUrl: xmarkSvg,
+          backgroundColor: '#ef4040',
+          position: 'topRight',
+        });
+      }
+
+      return renderGallery(images.hits);
+    })
     .catch(error => console.log(error));
 
   searchForm.reset();

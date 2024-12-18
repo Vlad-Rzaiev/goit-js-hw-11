@@ -1,4 +1,13 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const gallery = document.querySelector('.gallery');
+
+const modalSimpleLiteBox = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 export function renderGallery(images) {
   const markup = images
@@ -6,7 +15,7 @@ export function renderGallery(images) {
       return `
         <li class="gallery-item">
           <a class="gallery-link" href="${image.largeImageURL}">
-          <img
+            <img
             class="gallery-image"
             src="${image.webformatURL}"
             alt="${image.tags}"
@@ -35,4 +44,6 @@ export function renderGallery(images) {
     })
     .join('');
   gallery.innerHTML = markup;
+
+  modalSimpleLiteBox.refresh();
 }
