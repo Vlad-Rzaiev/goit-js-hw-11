@@ -3,11 +3,23 @@ import 'izitoast/dist/css/iziToast.min.css';
 import xmarkSvg from './img/xmark.svg';
 import { getImages } from './js/pixabay-api';
 import { renderGallery } from './js/render-functions';
+import { gallery } from './js/render-functions';
 
 const searchForm = document.querySelector('.search-form');
+const loader = document.querySelector('.loader');
 
 searchForm.addEventListener('submit', ev => {
   ev.preventDefault();
+
+  gallery.innerHTML = '';
+
+  function showLoader() {
+    loader.style.display = 'block';
+  }
+
+  function hideLoader() {
+    loader.style.display = 'none';
+  }
 
   const userInputValue = ev.target.elements.search.value.trim().toLowerCase();
 
@@ -21,6 +33,8 @@ searchForm.addEventListener('submit', ev => {
     });
     return;
   }
+
+  showLoader();
 
   getImages(userInputValue)
     .then(images => {
@@ -37,7 +51,16 @@ searchForm.addEventListener('submit', ev => {
 
       return renderGallery(images.hits);
     })
-    .catch(error => console.log(error));
+    .catch(error =>
+      iziToast.show({
+        message: `${error}`,
+        messageColor: '#ffffff',
+        iconUrl: xmarkSvg,
+        backgroundColor: '#ef4040',
+        position: 'topRight',
+      })
+    )
+    .finally(() => hideLoader());
 
   searchForm.reset();
 });

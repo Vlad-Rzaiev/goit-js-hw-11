@@ -1,7 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const gallery = document.querySelector('.gallery');
+export const gallery = document.querySelector('.gallery');
 
 const modalSimpleLiteBox = new SimpleLightbox('.gallery a', {
   captions: true,
