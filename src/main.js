@@ -8,18 +8,18 @@ import { gallery } from './js/render-functions';
 const searchForm = document.querySelector('.search-form');
 const loader = document.querySelector('.loader');
 
+function showLoader() {
+  loader.style.display = 'block';
+}
+
+function hideLoader() {
+  loader.style.display = 'none';
+}
+
 searchForm.addEventListener('submit', ev => {
   ev.preventDefault();
 
   gallery.innerHTML = '';
-
-  function showLoader() {
-    loader.style.display = 'block';
-  }
-
-  function hideLoader() {
-    loader.style.display = 'none';
-  }
 
   const userInputValue = ev.target.elements.search.value.trim().toLowerCase();
 
